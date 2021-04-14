@@ -7,7 +7,7 @@ class UsersRepository {
   }
 
   /**
-   * @param {Omit<UserModel, 'id' | 'createdAt' | 'updatedAt'>} user
+   * @param {User} user
    * @returns {Promise<User>}
    */
   async bootstrap(user) {
