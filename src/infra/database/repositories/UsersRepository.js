@@ -14,6 +14,13 @@ class UsersRepository {
     const newUser = this.repository.create(user)
     return this.repository.save(newUser)
   }
+
+  /**
+   * @param {string} email
+   */
+  async findByEmail(email) {
+    return this.repository.findOne({ where: { email } })
+  }
 }
 
 module.exports = UsersRepository

@@ -1,4 +1,5 @@
 const User = require('../../domain/User')
+const AppError = require('../../infra/AppError')
 const UsersRepository = require('../../infra/database/repositories/UsersRepository')
 
 /**
@@ -13,6 +14,12 @@ const UsersRepository = require('../../infra/database/repositories/UsersReposito
  */
 module.exports = async (createUserDTO) => {
   const repository = new UsersRepository()
+  const isEmailInUse = await repository.findByEmail(createUserDTO.email)
+
+  if (isEmailInUse) {
+    throw new AppError(AppError.Errors.EmailInUseException)
+  }
+
   const user = await repository.bootstrap(createUserDTO)
 
   return { ...user, password: undefined }
