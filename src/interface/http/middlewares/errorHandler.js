@@ -26,7 +26,7 @@ const getStatus = (error) => {
 module.exports = (error, request, response, next) => {
   if (error instanceof AppError) {
     const status = getStatus(error)
-    return response.status(status).json({ ...error, id: undefined })
+    return response.status(status).json(error)
   }
 
   return response.status(500).json({ message: 'Internal Server Error' })

@@ -8,7 +8,7 @@ class UsersController {
    */
   async create(req, res) {
     const user = await createUser(req.body)
-    return res.status(201).json({ user })
+    return res.status(201).json(user)
   }
 }
 
