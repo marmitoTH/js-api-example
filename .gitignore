@@ -1,18 +1,11 @@
 # Dependencies
 node_modules/
 
-# Output directories
-out/
-build/
-
-# Editor settings
+# Editor Settings
 .vscode/
 
-# Environment files
-.env
+# Generated directories
+coverage/
 
-# Databases
-*.db
-*.database
-*.sqlite
-*.sqlite3
+# Environment Variables
+.env

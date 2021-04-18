@@ -1,0 +1,10 @@
+{
+  "valid": [
+    {
+      "name": "Naruto Uzumaki",
+      "email": "naruto@mail.com",
+      "password": "novecaudas123",
+      "phoneNumber": "+5599111111"
+    }
+  ]
+}

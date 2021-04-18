@@ -3,7 +3,7 @@ const AppError = require('../../infra/AppError')
 const UsersRepository = require('../../infra/database/repositories/UsersRepository')
 
 /**
- * Creates a new User on the database and returns its data without password.
+ * Creates a new User on the database and returns its data.
  * @param {{
  *  name: string,
  *  email: string,
@@ -20,7 +20,5 @@ module.exports = async (createUserDTO) => {
     throw new AppError(AppError.Errors.EmailInUseException)
   }
 
-  const user = await repository.bootstrap(createUserDTO)
-
-  return { ...user, password: undefined }
+  return await repository.bootstrap(createUserDTO)
 }
