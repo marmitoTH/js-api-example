@@ -12,6 +12,13 @@ class AppError {
     this.type = Object.keys(Errors)[error]
     this.message = localization.__(`errors.${this.type}`)
   }
+
+  toJSON() {
+    return {
+      type: this.type,
+      message: this.message
+    }
+  }
 }
 
 module.exports = AppError

@@ -18,6 +18,17 @@ class User {
     this.createdAt = createdAt
     this.updatedAt = updatedAt
   }
+
+  toJSON() {
+    return {
+      id: this.id,
+      name: this.name,
+      email: this.email,
+      phoneNumber: this.phoneNumber,
+      createdAt: this.createdAt.toJSON(),
+      updatedAt: this.updatedAt.toJSON()
+    }
+  }
 }
 
 module.exports = User
