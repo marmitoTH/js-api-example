@@ -1,6 +1,7 @@
 const User = require('../../domain/User')
 const AppError = require('../../infra/AppError')
 const UsersRepository = require('../../infra/database/repositories/UsersRepository')
+const Password = require('../../infra/Password')
 
 /**
  * Creates a new User on the database and returns its data.
@@ -20,5 +21,10 @@ module.exports = async (createUserDTO) => {
     throw new AppError(AppError.Errors.EmailInUseException)
   }
 
-  return await repository.bootstrap(createUserDTO)
+  const hashedPassword = await Password.hash(createUserDTO.password)
+
+  return await repository.bootstrap({
+    ...createUserDTO,
+    password: hashedPassword
+  })
 }

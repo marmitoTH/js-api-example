@@ -7,11 +7,12 @@ describe('Create User Unit', () => {
   describe('When there are no users with same email', () => {
     const userData = users.valid[0]
 
-    it('creates a new user and returns its data', async () => {
+    it('creates a new user with hashed password and returns its data', async () => {
       const result = await createUser(userData)
       const expected = await new UsersRepository().findById(result.id)
 
       expect(result).toEqual(expected)
+      expect(result.password).not.toBe(userData.password)
     })
   })
 
