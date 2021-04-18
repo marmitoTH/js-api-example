@@ -16,6 +16,13 @@ class UsersRepository {
   }
 
   /**
+   * @param {String} id
+   */
+  async findById(id) {
+    return this.repository.findOne({ where: { id } })
+  }
+
+  /**
    * @param {string} email
    */
   async findByEmail(email) {
