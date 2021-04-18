@@ -1,5 +1,3 @@
-require('reflect-metadata')
-
 const options = require('./options')
 const { createConnection } = require('typeorm')
 
