@@ -3,20 +3,27 @@ const localization = require('../interface/localization')
 const Errors = {
   UnknownError: 0,
   EmailInUseException: 1,
-  UserNotFoundException: 2
+  UserNotFoundException: 2,
+  ValidationException: 3
 }
 
 class AppError {
-  constructor(error = 0) {
+  /**
+   * @param {number} error
+   * @param {Array<String>} messages
+   */
+  constructor(error = 0, messages = undefined) {
     this.id = error
     this.type = Object.keys(Errors)[error]
-    this.message = localization.__(`errors.${this.type}`)
+    this.description = localization.__(`errors.${this.type}`)
+    this.messages = messages
   }
 
   toJSON() {
     return {
       type: this.type,
-      message: this.message
+      description: this.description,
+      messages: this.messages
     }
   }
 }
