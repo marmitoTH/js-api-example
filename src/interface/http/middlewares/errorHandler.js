@@ -8,6 +8,7 @@ const { Errors } = require('../../../infra/AppError')
 const getStatus = (error) => {
   switch (error.id) {
     case Errors.EmailInUseException:
+    case Errors.ValidationException:
       return 400
     case Errors.UserNotFoundException:
       return 404
